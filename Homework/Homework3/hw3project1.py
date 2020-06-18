@@ -6,16 +6,13 @@
 # Write a program that calculates the cost per square inch of a circular pizza,
 # given its diameter and price
 #
-
 import math
 
 def main():
     price = eval(input("Enter the price of the pizza: "))
     diameter = eval(input("Enter diameter of the pizza: "))
-    radius = diameter/2
-    area = math.pi*(radius**2)
-    cost = price / area
-    print("The cost per square is", cost)
+    area = math.pi*((diameter/2)**2)
+    print("The cost per square is", (price/area))
 
 
 main()

@@ -12,10 +12,9 @@ def main():
     height = eval(input("Enter the height required to reach: "))
     angle = eval(input("Enter the angle of the ladder in degrees: "))
     
-    angle = (math.pi/180) * angle
-    length = height/math.sin(angle)
+    length = height/math.sin((math.pi/180) * angle)
 
-    print("The length of the ladder must be", length, "long.")
+    print("The length of the ladder must be", length, "units long.")
 
 
 main()
