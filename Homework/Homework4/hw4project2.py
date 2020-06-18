@@ -23,7 +23,6 @@ def main():
 
     # Draw the line on screen
     Line(p1, p2).draw(win)
-    #line.draw(win)
 
     # Draw midpoint in cyan
     midpoint = Point((p1.getX()+p2.getX())/2, (p1.getY()+p2.getY())/2)
