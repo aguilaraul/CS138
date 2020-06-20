@@ -1,8 +1,17 @@
-#
-# author    Raul Aguilar
-# date      June 16, 2020
+#! /usr/bin/python
+# File Name:     hw4project1.py
+# Programmer:    Raul Aguilar
+# Date:          June 20, 2020
+# 
 # CS 138 1535 Homework 4 Project 1
 # Draw a simple picture with at least 3 graphical objects.
+#
+# Algorithm:
+# 1. Draw window
+# 2. Draw head
+# 3. Draw right eye and clone for left eye
+# 4. Draw right pupil and clone for the left
+# 5. Draw triangle for mouth
 #
 from graphics import *
 

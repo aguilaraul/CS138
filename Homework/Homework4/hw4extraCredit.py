@@ -1,9 +1,30 @@
-#
-# author    Raul Aguilar
-# date      June 16, 2020
+#! /usr/bin/python
+# File Name:     hw4extraCredit.py
+# Programmer:    Raul Aguilar
+# Date:          June 20, 2020
+# 
 # CS 138 1535 Homework 4 Extra Credit
 # Write a program that allows the user to draw a simple house using five mouse
 # clicks
+#
+# Algorithm:
+# 1. Draw window and ask user to set corners of the house
+# 2. Calculate the width of the house, determine the top and bottom of
+# the house
+# 4. Draw the house and set outline to random color
+# 3. Ask to set the top-center of the door frame
+# 4. Calculate 1/5 of the house width to find width of the door
+# 5. Using the width of the door and bottom of the house, find the
+# top-right and bottom-left points of the door frame
+# 6. Draw the door
+# 7. Ask to set center of window
+# 8. Calculate 1/2 the door width for the window width
+# 9. Determine top-right and bottom-left corners of window frame from
+# center point
+# 10. Draw the window
+# 11. Ask to set the peak of the roof
+# 12. Using points from the top of the house and peak, draw the roof
+# 13. Click again to exit
 #
 from graphics import *
 import math

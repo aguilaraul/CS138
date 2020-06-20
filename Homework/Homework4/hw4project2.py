@@ -1,9 +1,19 @@
-#
-# author    Raul Aguilar
-# date      June 15, 2020
+#! /usr/bin/python
+# File Name:     hw4project2.py
+# Programmer:    Raul Aguilar
+# Date:          June 20, 2020
+# 
 # CS 138 1535 Homework 4 Project 2
 # This program allows the user to draw a line segment and then displays some
 # graphical and textual information about the line segment.
+#
+# Algorithm:
+# 1. Ask to set the start of the line
+# 2. Draw point for reference
+# 3. Ask to set the end of the line
+# 4. Draw the line
+# 5. Calculate midpoint and draw it in cyan
+# 6. Display slope and length of the line
 #
 from graphics import *
 import math
