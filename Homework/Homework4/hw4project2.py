@@ -9,16 +9,28 @@ from graphics import *
 import math
 
 def main():
-    win = GraphWin("Line!")
+    win = GraphWin("Line!", 300, 300)
     
     # Get the two points
+    message = Text(Point(150, 280), "Set the start of the line")
+    message.draw(win)
     print("Set the start of the line")
+    
+    # draw the first point
     p1 = win.getMouse()
     p1.draw(win)
+
+    message.setText("You clicked at: {}, {}".format(p1.getX(), p1.getY()))
     print("You clicked at:", p1.getX(), p1.getY())
 
+    # get the second point
+    message2 = Text(Point(150, 295), "Set the end of the line")
+    message2.draw(win)
     print("Set the end of the line")
+    
     p2 = win.getMouse()
+    
+    message.setText("You clicked at: {}, {}".format(p2.getX(), p2.getY()))
     print("You clicked at:", p2.getX(), p2.getY())
 
     # Draw the line on screen
@@ -37,7 +49,11 @@ def main():
 
     print("Slope:", slope)
     print("Length:", length)
+    
+    # click again before exit
+    message2.setText("Click anywhere to exit")
     win.getMouse()
+    win.close()
 
 
 main()

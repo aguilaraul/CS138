@@ -7,6 +7,11 @@
 #
 from graphics import *
 import math
+import random
+
+def randomColor():
+    r, g, b = random.randint(0,255), random.randint(0,255), random.randint(0,255)
+    return color_rgb(r,g,b)
 
 def main():
     win = GraphWin("Draw a house", 300, 300)
@@ -26,7 +31,7 @@ def main():
     
     # draw house
     house = Rectangle(p1, p2)
-    house.setOutline("red")
+    house.setOutline(randomColor())
     house.draw(win)
 
     # Draw door
@@ -38,7 +43,7 @@ def main():
     p4 = Point(p3.getX()-(doorWidth/2), p3.getY()) # top-left point
     p5 = Point(p3.getX()+(doorWidth/2), bottomHouse) # bottom-right point
     door = Rectangle(p4, p5)
-    door.setOutline("blue")
+    door.setOutline(randomColor())
     door.draw(win)
     
     # Draw window
@@ -50,7 +55,7 @@ def main():
     p7 = Point(p6.getX()-windowWidth, p6.getY()+windowWidth)
     p8 = Point(p6.getX()+windowWidth, p6.getY()-windowWidth)
     window = Rectangle(p7, p8)
-    window.setOutline("gold")
+    window.setOutline(randomColor())
     window.draw(win)
 
     # Draw roof
@@ -60,12 +65,13 @@ def main():
     p10 = Point(p1.getX(), topHouse)
     p11 = Point(p2.getX(), topHouse)
     roof = Polygon(p9, p10, p11)
-    roof.setOutline("green")
+    roof.setOutline(randomColor())
     roof.draw(win)
 
     # exit
     message.setText("Click anywhere to exit")
     win.getMouse()
+    win.close()
 
 
 main()

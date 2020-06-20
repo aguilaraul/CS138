@@ -4,7 +4,6 @@
 # CS 138 1535 Homework 4 Project 1
 # Draw a simple picture with at least 3 graphical objects.
 #
-
 from graphics import *
 
 def main():
@@ -40,5 +39,6 @@ def main():
 
     # click again before exit
     win.getMouse()
+    win.close()
 
 main()
