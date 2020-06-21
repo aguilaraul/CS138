@@ -4,13 +4,14 @@
 # Date:          June 20, 2020
 #
 # CS 138 1535 Homework 6 Project 1
-# Define functions for sphereArea(radius) to return the surface area of a
-# sphere given its radius and sphereVolume(radius) to return the volume of a
-# sphere given its radius.
+# Define functions for sphereArea(radius) to return the surface area of
+# a sphere given its radius and sphereVolume(radius) to return the
+# volume of a sphere given its radius.
 #
 # Algorithm:
 # 1. Calculate surface area and volume of two spheres
 # 2. Print results
+#
 import math
 
 def sphereArea(r):

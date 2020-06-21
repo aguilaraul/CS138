@@ -4,8 +4,8 @@
 # Date:          June 20, 2020
 # 
 # CS 138 1535 Homework 3 Project 1
-# Write a program that calculates the cost per square inch of a circular pizza,
-# given its diameter and price
+# Write a program that calculates the cost per square inch of a
+# circular pizza, given its diameter and price
 #
 # Algorithm:
 # 1. Enter price of pizza

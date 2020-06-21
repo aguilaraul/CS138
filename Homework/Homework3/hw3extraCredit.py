@@ -4,8 +4,8 @@
 # Date:          June 20, 2020
 # 
 # CS 138 1535 Homework 3 Extra Credit
-# Write a program that prompts the user for a 4-digit year and then outputs the
-# value of the Gregorian epact
+# Write a program that prompts the user for a 4-digit year and then
+# outputs the value of the Gregorian epact
 #
 # Algorithm:
 # 1. Take 4-digit year from the user

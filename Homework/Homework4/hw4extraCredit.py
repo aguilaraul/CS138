@@ -4,8 +4,8 @@
 # Date:          June 20, 2020
 # 
 # CS 138 1535 Homework 4 Extra Credit
-# Write a program that allows the user to draw a simple house using five mouse
-# clicks
+# Write a program that allows the user to draw a simple house using
+# five mouse clicks
 #
 # Algorithm:
 # 1. Draw window and ask user to set corners of the house

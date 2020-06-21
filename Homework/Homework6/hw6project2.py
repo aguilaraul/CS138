@@ -1,10 +1,11 @@
 #! /usr/bin/python
-# File Name:     hw6project1.py
+# File Name:     hw6project2.py
 # Programmer:    Raul Aguilar
 # Date:          June 20, 2020
 #
 # CS 138 1535 Homework 6 Project 2
-# Write a program to print the lyrics for ten verses of "The Ants Go Marching."
+# Write a program to print the lyrics for ten verses of "The Ants Go
+# Marching."
 #
 
 def antsGoMarching(number, activity):

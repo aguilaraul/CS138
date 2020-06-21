@@ -4,8 +4,8 @@
 # Date:          June 20, 2020
 # 
 # CS 138 1535 Homework 3 Project 2
-# Write a program to determine the length of a ladder required to reach a given
-# height when leaned against a house
+# Write a program to determine the length of a ladder required to reach
+# a given height when leaned against a house
 #
 # Algorithm:
 # 1. Enter the height required to reach

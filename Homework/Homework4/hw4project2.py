@@ -4,8 +4,8 @@
 # Date:          June 20, 2020
 # 
 # CS 138 1535 Homework 4 Project 2
-# This program allows the user to draw a line segment and then displays some
-# graphical and textual information about the line segment.
+# This program allows the user to draw a line segment and then displays
+# some graphical and textual information about the line segment.
 #
 # Algorithm:
 # 1. Ask to set the start of the line

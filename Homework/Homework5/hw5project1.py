@@ -4,8 +4,8 @@
 # Date:          June 20, 2020
 #
 # CS 138 1535 Homework 5 Project 1
-# Write a program that allows the user to type in a phrase and then outputs the
-# acronym for that phrase.
+# Write a program that allows the user to type in a phrase and then
+# outputs the acronym for that phrase.
 #
 # Algorithm:
 # 1. Ask user for phrase to turn into acronym
