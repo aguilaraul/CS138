@@ -14,10 +14,10 @@
 # 3. User clicks to move circle 10 times
 # 
 from graphics import *
-import random
+from random import randint
 
 def randomColor():
-    r, g, b = random.randint(0,255), random.randint(0,255), random.randint(0,255)
+    r, g, b = randint(0,255), randint(0,255), randint(0,255)
     return color_rgb(r,g,b)
 
 def moveTo(shape, newCenter):

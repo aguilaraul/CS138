@@ -8,7 +8,7 @@
 # height of the mother in inches and the height of the father in
 # inches. Output the estimated adult height of the child in inches.
 #
-# Algorith:
+# Algorithm:
 # 1. Ask if male or female child?
 # 2. Enter height of mother in inches
 # 3. Enter height of father in inches

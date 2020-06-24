@@ -13,6 +13,7 @@
 # 3. Take the first letter of each split word
 # 4. Make them uppercase
 # 5. Print out the acronym
+#
 
 def main():
     chars = []

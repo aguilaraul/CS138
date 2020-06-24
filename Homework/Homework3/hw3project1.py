@@ -14,7 +14,6 @@
 # 4. Calculate price per square inch of pizza
 # 5. Display results
 #
-
 import math
 
 def main():

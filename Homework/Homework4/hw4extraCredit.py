@@ -27,11 +27,11 @@
 # 13. Click again to exit
 #
 from graphics import *
+from random import randint
 import math
-import random
 
 def randomColor():
-    r, g, b = random.randint(0,255), random.randint(0,255), random.randint(0,255)
+    r, g, b = randint(0,255), randint(0,255), randint(0,255)
     return color_rgb(r,g,b)
 
 def main():
