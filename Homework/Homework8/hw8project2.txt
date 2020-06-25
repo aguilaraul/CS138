@@ -1,0 +1,61 @@
+Raul Aguilar
+June 24, 2020
+CS 138 Homework 8 Project 2
+Give the truth table for each of the following Boolean expressions
+
+1. not (P or Q)
+
+P	Q	!(P or Q)
+-----------------
+T	T		F
+T	F		F
+F	T		F
+F	F		T
+
+
+2. P and Q or R
+
+P	Q	R	(P and Q) or R
+--------------------------
+T	T	T		T
+T	T	F		T
+T	F	F		F
+T	F	T		T
+F	F	T		T
+F	T	T		T
+F	T	F		F
+F	F	F		F
+
+3. (not P or not Q) and not R
+
+P	Q	R	(!P or !Q) and !R
+------------------------------
+T	T	T		F
+T	T	F		F
+T	F	F		T
+T	F	T		F
+F	F	T		F
+F	T	T		F
+F	T	F		T
+F	F	F		T
+
+4. (P and Q) or (R and S)
+
+P	Q	R	S	(P and Q) or (R and S)
+-------------------------------------
+T	T	T	T			T
+T	T	T	F			T
+T	T	F	T			T
+T	T	F	F			T
+T	F	T	T			T
+T	F	T	F			F
+T	F	F	T			F
+T	F	F	F			F
+F	T	T	T			T
+F	T	T	F			F
+F	T	F	T			F
+F	T	F	F			F
+F	F	T	T			T
+F	F	T	F			F
+F	F	F	T			F
+F	F	F	F			F
