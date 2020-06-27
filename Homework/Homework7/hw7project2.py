@@ -4,7 +4,11 @@
 # Date:          June 20, 2020
 #
 # CS 138 1535 Homework 7 Project 2
-#
+# Poducksville speeding crisis is barreling out of control fast. Skid
+# those speedsters to a stop by writing a program that accepts a speed
+# limit and a clocked speed and either prints a message indicating the
+# speed was legal or prints the amount of the fine, if the speed is
+# illegal.
 #
 # Algorithm:
 # 1. Ask for clocked speed
@@ -34,8 +38,8 @@ def speedingTicket(speedLimit, clockedSpeed):
     
 
 def main():
-    clockedSpeed = eval(input("Enter the clocked speed: "))
-    speedLimit = eval(input("Enter the speed limit: "))
+    clockedSpeed = int(input("Enter the clocked speed: "))
+    speedLimit = int(input("Enter the speed limit: "))
     speedingTicket(speedLimit, clockedSpeed)
 
 main()

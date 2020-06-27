@@ -17,9 +17,24 @@
 #
 
 def main():
+    validMotherEntry = False
+    validFatherEntry = False
+
     gender = input("Is the child male or female? ")
-    motherHeight = eval(input("Enter the mother's height in inches: "))
-    fatherHeight = eval(input("Enter the father's height in inches: "))
+
+    while not validMotherEntry:
+        try:
+            motherHeight = float(input("Enter the mother's height in inches: "))
+            validMotherEntry = True
+        except:
+            print("\nInvalid height entered. Reenter height.\n")
+
+    while not validFatherEntry:
+        try:
+            fatherHeight = float(input("Enter the father's height in inches: "))
+            validFatherEntry = True
+        except:
+            print("\nInvalid height entered. Reenter height.\n")
     
     if(gender == "male"):
         childHeight = ((motherHeight*13/12)+fatherHeight)/2
