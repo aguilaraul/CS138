@@ -17,10 +17,16 @@
 #
 
 def main():
+    validGenderEntry = False
     validMotherEntry = False
     validFatherEntry = False
 
-    gender = input("Is the child male or female? ")
+    while not validGenderEntry:
+        gender = input("Is the child male or female? ")
+        if gender == "male" or gender == "female":
+            validGenderEntry = True
+        else:
+            print("wrong gender")
 
     while not validMotherEntry:
         try:

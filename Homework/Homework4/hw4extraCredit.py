@@ -11,20 +11,20 @@
 # 1. Draw window and ask user to set corners of the house
 # 2. Calculate the width of the house, determine the top and bottom of
 # the house
-# 4. Draw the house and set outline to random color
-# 3. Ask to set the top-center of the door frame
-# 4. Calculate 1/5 of the house width to find width of the door
-# 5. Using the width of the door and bottom of the house, find the
-# top-right and bottom-left points of the door frame
-# 6. Draw the door
-# 7. Ask to set center of window
-# 8. Calculate 1/2 the door width for the window width
-# 9. Determine top-right and bottom-left corners of window frame from
+# 3. Draw the house and set outline to random color
+# 4. Ask to set the top-center of the door frame
+# 5. Calculate 1/5 of the house width to find width of the door
+# 6. Using the width of the door and bottom of the house, find the
+# top-left and bottom-right points of the door frame
+# 7. Draw the door
+# 8. Ask to set center of window
+# 9. Calculate 1/2 the door width for the window width
+# 10. Determine top-left and bottom-right corners of window frame from
 # center point
-# 10. Draw the window
-# 11. Ask to set the peak of the roof
-# 12. Using points from the top of the house and peak, draw the roof
-# 13. Click again to exit
+# 11. Draw the window
+# 12. Ask to set the peak of the roof
+# 13. Using points from the top of the house and peak, draw the roof
+# 14. Click again to exit
 #
 from graphics import *
 from random import randint
@@ -44,17 +44,18 @@ def main():
     p1 = win.getMouse()
     p1.draw(win)
     p2 = win.getMouse()
+    p1.undraw()
+
+    # draw house
+    house = Rectangle(p1, p2)
+    house.setOutline(randomColor())
+    house.draw(win)
 
     # calculate data points
     houseWidth = max(p1.getX(), p2.getX()) - min(p1.getX(), p2.getX())
     topHouse = max(p1.getY(), p2.getY())
     bottomHouse = min(p1.getY(), p2.getY())
     
-    # draw house
-    house = Rectangle(p1, p2)
-    house.setOutline(randomColor())
-    house.draw(win)
-
     # Draw door
     message.setText("Set the top of the door")
     p3 = win.getMouse()
@@ -73,8 +74,8 @@ def main():
 
     windowWidth = doorWidth/4
     
-    p7 = Point(p6.getX()-windowWidth, p6.getY()+windowWidth)
-    p8 = Point(p6.getX()+windowWidth, p6.getY()-windowWidth)
+    p7 = Point(p6.getX()-windowWidth, p6.getY()+windowWidth) # top-left point
+    p8 = Point(p6.getX()+windowWidth, p6.getY()-windowWidth) # bottom-right point
     window = Rectangle(p7, p8)
     window.setOutline(randomColor())
     window.draw(win)
