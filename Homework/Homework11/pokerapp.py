@@ -7,8 +7,9 @@ class PokerApp:
         self.interface = interface
 
     def run(self):
-        while self.money >= 10 and self.interface.wantToPlay():
-            self.playRound()
+        if self.interface.splashScreen():
+            while self.money >= 10 and self.interface.wantToPlay():
+                self.playRound()
         self.interface.close()
 
     def playRound(self):

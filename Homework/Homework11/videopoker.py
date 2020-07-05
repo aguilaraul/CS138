@@ -3,21 +3,44 @@ from graphics import *
 from button import Button
 from dieview import DieView
 
+WINW = 600
+WINH = 400
 
 class GraphicsInterface:
     def __init__(self):
-        self.win = GraphWin("Dice Poker", 600, 400)
+        self.win = GraphWin("Dice Poker", WINW, WINH)
         self.win.setBackground("green3")
         banner = Text(Point(300, 30), "Python Poker Parlor")
         banner.setSize(24)
         banner.setFill("yellow2")
         banner.setStyle("bold")
         banner.draw(self.win)
+        self.buttons = []
+        b = Button(self.win, Point(WINW/3, WINH-WINH/5), 150, 40, "Let's Play")
+        self.buttons.append(b)
+        b = Button(self.win, Point(WINW-WINW/3, WINH-WINH/5), 150, 40, "Exit")
+        self.buttons.append(b)
+        self.displayRules()
+
+    def displayRules(self):
+        self.rules = []
+        text = ["You start with $100",
+                "Each round costs $10 to play",
+                "You start with a random hand and get two chances to reroll",
+                "At the end of the hand, you get a payout or nothing"]
+        offset = 0
+
+        for rule in text:
+            r = Text(Point(WINW/2, WINH/5+offset), rule)
+            r.draw(self.win)
+            self.rules.append(r)
+            offset += 20
+
+    def drawGame(self):
         self.msg = Text(Point(300, 380), "Welcome to the Dice Table")
         self.msg.setSize(18)
         self.msg.draw(self.win)
         self.createDice(Point(300, 100), 75)
-        self.buttons = []
         self.addDiceButtons(Point(300, 170), 75, 30)
         b = Button(self.win, Point(300, 230), 400, 40, "Roll Dice")
         self.buttons.append(b)
@@ -78,6 +101,21 @@ class GraphicsInterface:
                 if b.clicked(p):
                     return b.getLabel()  # function exit here
 
+    def splashScreen(self):
+        while True:
+            ans = self.choose(["Let's Play", "Exit"])
+
+            if ans == "Let's Play":
+                for m in self.rules:
+                    m.undraw()
+                for b in self.buttons:
+                    b.undraw()
+                self.buttons.clear()
+                self.drawGame()
+                return True
+            else:
+                return False
+
     def wantToPlay(self):
         while True:
             ans = self.choose(["Roll Dice", "Quit", "Help"])
@@ -108,6 +146,8 @@ class GraphicsInterface:
                     d.setColor("black")
                 if b == "Score":
                     return []
+                if b == "Help":
+                    self.winHelp()
                 elif choices != []:
                     return choices
 
@@ -121,3 +161,20 @@ class GraphicsInterface:
         backdrop.setOutline("green3")
         backdrop.draw(helpWin)
         helpWin.setBackground("green3")
+
+        titles = "{} {:>75}".format("Hand", "Pay")
+        title = Text(Point(400/2, 20), titles)
+        title.draw(helpWin)
+        Line(Point(10, 30), Point(390, 30)).draw(helpWin)
+        p = Text(Point(400/2, 45), "{:<20} {:>60}".format("Two Pairs", "5"))
+        p.draw(helpWin)
+        p = Text(Point(400/2, 65), "{:<17} {:>60}".format("Three of a Kind", "8"))
+        p.draw(helpWin)
+        p = Text(Point(400/2, 85), "{:<18} {:>61}".format("Full House", "12"))
+        p.draw(helpWin)
+        p = Text(Point(400/2, 105), "{:<12} {:>63}".format("Four of a Kind", "15"))
+        p.draw(helpWin)
+        p = Text(Point(400/2, 125), "{:<21} {:>61}".format("Straight", "20"))
+        p.draw(helpWin)
+        p = Text(Point(400/2, 145), "{:<17} {:>60}".format("Five of a Kind", "30"))
+        p.draw(helpWin)
