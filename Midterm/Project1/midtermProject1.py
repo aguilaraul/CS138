@@ -40,6 +40,14 @@ def stdDev(list):
 
         return math.sqrt(S / len(list)-1)
 
+def stdDevRange(list):
+    if len(list) < 2:
+        return None
+    else:
+        sD = stdDev(list)
+        M = mean(list)
+        return [M-(2*sD), M+(2*sD)]
+
 
 def run(filename):
     numbers = []
@@ -50,14 +58,16 @@ def run(filename):
     inFile.close()
 
     numbers.sort()
-    print("Mean:", mean(numbers))
-    print("Median:", median(numbers))
-    print("Standard Dev:", stdDev(numbers))
+    print("{:<17} {}".format("Mean:", mean(numbers)))
+    print("{:<17} {}".format("Median:", median(numbers)))
+    print("{:<17} {}".format("Standard Dev:", stdDev(numbers)))
+    print("{:<17} {}".format("Deviation Range:", stdDevRange(numbers)))
     print()
 
 
 def main():
-    files = ["0num.txt", "15num.txt", "500num.txt", "859num.txt", "1000num.txt"]
+    files = ["0num.txt", "1num.txt", "2num.txt", "3num.txt", "15num.txt",
+             "500num.txt", "859num.txt", "1000num.txt"]
 
     for file in files:
         print(file)

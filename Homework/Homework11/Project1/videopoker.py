@@ -14,20 +14,24 @@ class GraphicsInterface:
         banner.setSize(24)
         banner.setFill("yellow2")
         banner.setStyle("bold")
+        # Draw the splash screen
         banner.draw(self.win)
         self.buttons = []
         b = Button(self.win, Point(WINW/3, WINH-WINH/5), 150, 40, "Let's Play")
         self.buttons.append(b)
         b = Button(self.win, Point(WINW-WINW/3, WINH-WINH/5), 150, 40, "Exit")
         self.buttons.append(b)
+        self.rules = []
         self.displayRules()
 
     def displayRules(self):
-        self.rules = []
+        """Draws the rules of the game on the splash screen as part of
+        the initialization."""
         text = ["You start with $100",
                 "Each round costs $10 to play",
                 "You start with a random hand and get two chances to reroll",
-                "At the end of the hand, you get a payout or nothing"]
+                "At the end of the hand, you get a payout or nothing",
+                "Are you ready to roll?"]
         offset = 0
 
         for rule in text:
@@ -36,7 +40,9 @@ class GraphicsInterface:
             self.rules.append(r)
             offset += 20
 
-    def drawGame(self):
+    def displayGame(self):
+        """Draws the game's main interface. Should only be drawn after
+        the user selects 'Let's Play' from the splash screen."""
         self.msg = Text(Point(300, 380), "Welcome to the Dice Table")
         self.msg.setSize(18)
         self.msg.draw(self.win)
@@ -102,16 +108,22 @@ class GraphicsInterface:
                     return b.getLabel()  # function exit here
 
     def splashScreen(self):
+        """Interactive buttons on the splash screen before the start of
+        the game. If 'Let's Play' is selected, the rules and buttons
+        are undrawn and the game interface is drawn before returning
+        True to start the game. Otherwise, 'Exit' exits the game."""
         while True:
             ans = self.choose(["Let's Play", "Exit"])
 
             if ans == "Let's Play":
-                for m in self.rules:
-                    m.undraw()
-                for b in self.buttons:
-                    b.undraw()
-                self.buttons.clear()
-                self.drawGame()
+                # Undraw the rules and buttons
+                for rule in self.rules:
+                    rule.undraw()
+                for button in self.buttons:
+                    button.undraw()
+                self.buttons.clear() # clear out the buttons
+                # Draw the game interface
+                self.displayGame()
                 return True
             else:
                 return False
@@ -155,6 +167,8 @@ class GraphicsInterface:
         self.win.close()
 
     def winHelp(self):
+        """Displays the help window. Contains the score payouts of each
+        winning hand."""
         helpWin = GraphWin("Help: Score Payout", 400, 200)
         backdrop = Rectangle(Point(10, 10), Point(390, 190))
         backdrop.setFill("lightgrey")
