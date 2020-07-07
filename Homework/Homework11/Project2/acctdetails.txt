@@ -1,3 +1,5 @@
-id,1364872
-password,csisfun
-balance,1200
+first name, Raul
+last name, Aguilar
+id, 1364872
+password, csisfun
+balance, 1200

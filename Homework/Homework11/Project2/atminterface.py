@@ -18,14 +18,18 @@ class ATMInterface:
 		self.buttons = []
 		self.entries = []
 		self.texts = []
-		self.balance = Text(Point(0,0), "")
-		self.loginmsg = Text(Point(WINW/2, WINH-WINH/3), "")
-		self.loginmsg.draw(self.win)
 		banner = Text(Point(WINW/2, 30), "Bank of Computer Science")
 		banner.setSize(24)
 		banner.setFill("white")
 		banner.setStyle("bold")
 		banner.draw(self.win)
+		self.drawLoginScreen()
+
+
+	def drawLoginScreen(self):
+		self.balance = Text(Point(0,0), "")
+		self.loginmsg = Text(Point(WINW/2, WINH-WINH/3), "")
+		self.texts.append(self.loginmsg)
 
 		# Entry Boxes
 		t = Text(Point(WINW/3, WINH/3), "Username")
@@ -39,6 +43,7 @@ class ATMInterface:
 		self.entries.append(e)
 
 		for t in self.texts:
+			t.setTextColor("white")
 			t.setStyle("bold")
 			t.setFace("courier")
 			t.draw(self.win)
@@ -54,17 +59,8 @@ class ATMInterface:
 		b = Button(self.win, Point(WINW-WINW/3, WINH-WINH/5), 150, 40, "Exit")
 		self.buttons.append(b)
 
-
-	def close(self):
-		self.win.close()
-
-	
-	def setLoginMsg(self, text):
-		self.loginmsg.setText(text)
-
 	
 	def undrawLoginScreen(self):
-		self.loginmsg.undraw()
 		for t in self.texts:
 			t.undraw()
 		for e in self.entries:
@@ -75,6 +71,10 @@ class ATMInterface:
 		self.texts.clear()
 		self.entries.clear()
 		self.buttons.clear()
+
+
+	def close(self):
+		self.win.close()
 
 
 	def choose(self, choices):
@@ -95,6 +95,10 @@ class ATMInterface:
 					return b.getLabel()  # function exit here
 		
 
+	def setLoginMsg(self, text):
+		self.loginmsg.setText(text)
+
+	
 	def login(self):
 		while True:
 			ans = self.choose(["Login", "Exit"])
@@ -103,11 +107,17 @@ class ATMInterface:
 
 	def accountView(self, accountDetails):
 		self.account = accountDetails
-		money = str(self.account[self.account.index("balance")+1])
-		self.balance = Text(Point(100, 100), "{}: ${}".format("Balance", money))
-		self.balance.setFace("courier")
-		self.balance.setTextColor("white")
-		self.balance.draw(self.win)
+		firstName = self.account[self.account.index("first name")+1]
+		money = int(self.account[self.account.index("balance")+1])
+		t = Text(Point(100, 100), "Welcome {},".format(firstName))
+		self.texts.append(t)
+		self.balance = Text(Point(120, 120), "{}: ${}".format("Balance", money))
+		self.texts.append(self.balance)
+
+		for t in self.texts:
+			t.setFace("courier")
+			t.setTextColor("white")
+			t.draw(self.win)
 
 		b = Button(self.win, Point(WINW-50, WINH-11), 100, 22, "Logout")
 		self.buttons.append(b)
@@ -115,5 +125,13 @@ class ATMInterface:
 		while True:
 			b = self.choose(["Logout"])
 
-			if b == "Logout":
-				return self.close
+			return b == "Logout"
+
+	
+	def undrawAccountView(self):
+		for t in self.texts:
+			t.undraw()
+		for b in self.buttons:
+			b.undraw()
+		self.texts.clear()
+		self.buttons.clear()

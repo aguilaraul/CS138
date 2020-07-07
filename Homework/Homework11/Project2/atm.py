@@ -13,7 +13,10 @@ class ATM:
                 self.interface.setLoginMsg("Login successful...")
                 time.sleep(2)
                 self.interface.undrawLoginScreen()
-                self.interface.accountView(self.acctDetails)
+                if self.interface.accountView(self.acctDetails):
+                    self.interface.undrawAccountView()
+                    self.interface.drawLoginScreen()
+                    self.run()
             else:
                 self.interface.setLoginMsg("Wrong username/password")
                 self.run()
