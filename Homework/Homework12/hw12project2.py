@@ -3,7 +3,8 @@
 # date      July 6, 2020
 #
 # CS 138 1535 Homework 12 Project 2
-#
+# Write a recursive function that detects whether a string is a
+# palindrome.
 #
 # Algorithm:
 # 1. Base case: check if the string is 1 charater long
