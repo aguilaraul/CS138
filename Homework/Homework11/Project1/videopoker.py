@@ -14,14 +14,14 @@ class GraphicsInterface:
         banner.setSize(24)
         banner.setFill("yellow2")
         banner.setStyle("bold")
-        # Draw the splash screen
         banner.draw(self.win)
+        # Draw the splash screen
         self.buttons = []
+        self.rules = []
         b = Button(self.win, Point(WINW/3, WINH-WINH/5), 150, 40, "Let's Play")
         self.buttons.append(b)
         b = Button(self.win, Point(WINW-WINW/3, WINH-WINH/5), 150, 40, "Exit")
         self.buttons.append(b)
-        self.rules = []
         self.displayRules()
 
     def displayRules(self):
@@ -40,14 +40,16 @@ class GraphicsInterface:
             self.rules.append(r)
             offset += 20
 
-    def displayGame(self):
+    def drawGame(self):
         """Draws the game's main interface. Should only be drawn after
         the user selects 'Let's Play' from the splash screen."""
         self.msg = Text(Point(300, 380), "Welcome to the Dice Table")
         self.msg.setSize(18)
         self.msg.draw(self.win)
+
         self.createDice(Point(300, 100), 75)
         self.addDiceButtons(Point(300, 170), 75, 30)
+
         b = Button(self.win, Point(300, 230), 400, 40, "Roll Dice")
         self.buttons.append(b)
         b = Button(self.win, Point(300, 280), 150, 40, "Score")
@@ -56,6 +58,7 @@ class GraphicsInterface:
         self.buttons.append(b)
         b = Button(self.win, Point(30, 375), 40, 30, "Help")
         self.buttons.append(b)
+
         self.money = Text(Point(300, 325), "$100")
         self.money.setSize(18)
         self.money.draw(self.win)
@@ -123,7 +126,7 @@ class GraphicsInterface:
                     button.undraw()
                 self.buttons.clear() # clear out the buttons
                 # Draw the game interface
-                self.displayGame()
+                self.drawGame()
                 return True
             else:
                 return False
