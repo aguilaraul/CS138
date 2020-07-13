@@ -1,11 +1,16 @@
 #
 # author    Raul Aguilar
-# date      July 9, 2020
+# date      July 13, 2020
 #
 # CS 138 1538 Homework 12 Project 1
 # Compare the results between linear search and binary search
 #
 # Algorithm:
+# 1. Open text files containing numbers
+# 2. Read numbers into a list
+# 3. Apply linear search algorithm and binary search algorithm on each
+#   list
+# 4. Display results
 #
 
 
@@ -38,8 +43,8 @@ def binarySearch(x, nums):
 
 
 def main():
-    key = 6056765
-    files = ["numbers.txt", "10000num.txt", "100000num.txt"]
+    key = 2389240
+    files = ["1000num.txt", "10000num.txt", "100000num.txt"]
 
     for file in files:
         numbers = []
@@ -50,10 +55,12 @@ def main():
 
         print("Searching for {} in a list of {} numbers.".format(key, len(numbers)))
         print("Linear search results:")
-        print(linearSearch(key, numbers))
+        index, loops = linearSearch(key, numbers)
+        print("Index: {}, Iterations: {}".format(index, loops))
         print("Binary search results:")
         numbers.sort()
-        print(binarySearch(key, numbers))
+        index, loops = binarySearch(key, numbers)
+        print("Index: {}, Iterations: {}".format(index, loops))
         print()
 
 
