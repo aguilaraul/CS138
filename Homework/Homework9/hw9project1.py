@@ -1,6 +1,6 @@
 #
 # author    Raul Aguilar
-# date      June 26, 2020
+# date      July 13, 2020
 #
 # CS 138 Homework 9 Project 1
 # Use the Button class to create GUI for Homework 7 Project 1
@@ -86,7 +86,7 @@ def main():
             validFatherEntry = False
 
             # Validate gender entry
-            gender = genderEntry.getText()
+            gender = genderEntry.getText().lower()
             if((gender == "male") or (gender == "female")):
                 genderEntry.setTextColor("black")
                 validGenderEntry = True
