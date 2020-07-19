@@ -1,0 +1,27 @@
+Selection sort of 5000 numbers
+Start time: 1595190185791550400
+Finish time: 1595190187331543400
+Total time: 1.539993 seconds
+
+Merge sort of 5000 numbers
+Start time: 1595190224790795600
+Finish time: 1595190224811815100
+Total time: 0.0210195 seconds
+
+Selection sort of 50000 numbers
+Start time: 1595190299655903300
+Finish time: 1595190454935149800
+Total time: 155.2792465 seconds
+
+Merge sort of 50000 numbers
+Start time: 1595190480285521700
+Finish time: 1595190480547760600
+Total time: 0.2622389 seconds
+
+Selection sort of 500000 numbers
+Did Not Finish
+
+Merge sort of 500000 numbers
+Start time: 1595194522397466600
+Finish time: 1595194525605021800
+Total time: 3.2075552 seconds
