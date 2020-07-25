@@ -12,6 +12,9 @@
 #   list
 # 4. Display results
 #
+# Search algorithms from
+# Python programming : an introduction to computer science\
+#
 
 
 def linearSearch(x, nums):
