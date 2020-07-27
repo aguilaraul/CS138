@@ -31,45 +31,31 @@ def populateDictionary(filename):
     return words
 
 
-def spellCheck(word):
-    if word[0] in punctuation_:
-        return spellCheck(word[1:])
+def spellCheck(word, dictionary):
+    if len(word) == 0:
+        return True
 
-    if word[-1] in punctuation_:
-        return spellCheck(word[:-1])
+    if word[0] in punctuation:
+        return spellCheck(word[1:], dictionary)
+    if word[-1] in punctuation:
+        return spellCheck(word[:-1], dictionary)
 
-    if binarySearch(word, dictionary) == -1:
+    if binarySearch(word, dictionary) != -1:
+        return True
+    else:
         return word
 
 
 def main():
-    punctuation_ = punctuation +"“”"
     dictionary = populateDictionary("english.txt")
-
     book = open("taleoftwocities.txt", "r", encoding='utf-8')
 
     for line in book:
         if line.strip() != "":
             line_words = line.split()
             for word in line_words:
-                word = word.lower()
-                #for ch in word:
-
-                # check last letter
-                ch = word[-1]
-                if ch in punctuation_:
-                    #print(word)
-                    #print("-->", ch)
-                    word = word[:-1]
-
-                #print("New word:", word)
-                if binarySearch(word, dictionary) == -1:
-                    print("Spell check error:", word)
-
-        #print(line.split())
-
-    #word = input("Enter a word to spell check: ")
-
-    #print(binarySearch(word, words))
+                #word = word.lower()
+                if spellCheck(word, dictionary) != True:
+                    print(spellCheck(word, dictionary))
 
 main()
