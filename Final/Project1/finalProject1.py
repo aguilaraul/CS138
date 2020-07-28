@@ -6,18 +6,14 @@
 #
 #
 #
+from interface import Interface
 from spellchecker import SpellChecker
 
 def main():
-    sc = SpellChecker("english.txt")
-    book = open("taleoftwocities.txt", "r", encoding='utf-8')
-
-    for line in book:
-        if line.strip() != "":
-            line_words = line.split()
-            for word in line_words:
-                if sc.spellCheck(word) != True:
-                    print(sc.spellCheck(word))
+    inter = Interface()
+    sc = SpellChecker(inter)
+    sc.run()
+    input("Press Return to exit.")
 
 
 main()

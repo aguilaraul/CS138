@@ -6,11 +6,21 @@
 # CS 138 1535 Final Project 1
 #
 #
+#
+import os.path
 from string import punctuation
 
+
 class SpellChecker():
-    def __init__(self, filename):
-        self.dictionary = self.populateDictionary(filename)
+    def __init__(self, interface):
+        self.interface = interface
+        self.dictionary = dict()
+
+    def getDictionary(self):
+        return self.interface.entries[0].getText()
+
+    def getFile(self):
+        return self.interface.entries[1].getText()
 
     def populateDictionary(self, filename):
         dictionary = []
@@ -48,3 +58,22 @@ class SpellChecker():
             return True
         else:
             return word
+
+    def run(self):
+        if self.interface.checkSpelling():
+            self.interface.close()
+            if os.path.isfile(self.getDictionary()):
+                self.dictionary = self.populateDictionary(self.getDictionary())
+                if os.path.isfile(self.getFile()):
+                    book = open(self.getFile(), "r", encoding='utf-8')
+                    print("Misspelled Words:")
+                    for line in book:
+                        if line.strip() != "":
+                            line_words = line.split()
+                            for word in line_words:
+                                if self.spellCheck(word) != True:
+                                    print(self.spellCheck(word))
+                else:
+                    print("File not found. Re-run and enter correct file.")
+            else:
+                print("Dictionary not found. Re-run and enter correct dictionary file.")
