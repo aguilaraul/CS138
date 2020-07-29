@@ -21,7 +21,11 @@
 #   If name in dict, print name, rank, and count
 #   If name not in dict, print name is not ranked among 1000
 #
-from nameinfo import NameInfo
+class NameInfo:
+    def __init__(self, rank, count):
+        self.rank = rank
+        self.count = count
+
 
 def populateNames(filename):
     names = dict()

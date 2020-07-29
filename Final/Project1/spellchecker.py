@@ -1,11 +1,24 @@
 # spellchecker.py
 #
 # author    Raul Aguilar
-# date      July 27, 2020
+# date      July 28, 2020
 #
 # CS 138 1535 Final Project 1
+# Spell checks a file using a designated dictionary, both provided by
+# the user, and prints out misspelled words to the console.
 #
-#
+# Algorithm:
+# If the spell check button is pressed, check if the provided
+# dictionary file exists. If it does not, then state so to the console
+# and exit.
+# If the dictionary file is avaliable, then populate the dictionary.
+# Check if the file to spell check exists. If it does not, state so and
+# exit.
+# If the file exists, parse it into seperate lines.
+# Split each line into individual words.
+# Check each word against the dictionary using a binary search.
+# Print every misspelled word.
+# Wait for termination.
 #
 import os.path
 from string import punctuation
@@ -24,7 +37,7 @@ class SpellChecker():
 
     def populateDictionary(self, filename):
         dictionary = []
-        words = open(filename, "r")
+        words = open(filename, "r", encoding='utf-8')
         for word in words:
             dictionary.append(word.strip())
         return dictionary
@@ -65,9 +78,9 @@ class SpellChecker():
             if os.path.isfile(self.getDictionary()):
                 self.dictionary = self.populateDictionary(self.getDictionary())
                 if os.path.isfile(self.getFile()):
-                    book = open(self.getFile(), "r", encoding='utf-8')
+                    file_ = open(self.getFile(), "r", encoding='utf-8')
                     print("Misspelled Words:")
-                    for line in book:
+                    for line in file_:
                         if line.strip() != "":
                             line_words = line.split()
                             for word in line_words:

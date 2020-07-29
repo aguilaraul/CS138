@@ -22,6 +22,7 @@ class Interface:
         self.entries = []
         self.texts = []
 
+        # Draw text
         t = Text(Point(WINW/5, WINH/3), "Dictionary:")
         self.texts.append(t)
         t = Text(Point(WINW/5, WINH/3+20), "File:")
@@ -31,6 +32,7 @@ class Interface:
             t.setStyle("bold")
             t.draw(self.win)
 
+        # Draw entry boxes
         e = Entry(Point(WINW-WINW/3, WINH/3), 20)
         self.entries.append(e)
         e = Entry(Point(WINW-WINW/3, WINH/3+20), 20)
@@ -41,6 +43,7 @@ class Interface:
             e.setFace("courier")
             e.draw(self.win)
 
+        # Draw 'Spell Check' button
         b = Button(self.win, Point(WINW-WINW/6, WINH-20), 100, 30, "Spell Check")
         b.rect.setFill("lightblue")
         self.buttons.append(b)
