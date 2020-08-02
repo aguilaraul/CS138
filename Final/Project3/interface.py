@@ -22,7 +22,6 @@ class Interface:
         self.buttons = []
         self.entries = []
         self.texts = []
-        self.draw_main_menu()
 
 
     def close(self):
@@ -43,6 +42,7 @@ class Interface:
                 if b.clicked(p):
                     return b.getLabel()
 
+    # Screens
     def draw_main_menu(self):
         buttons = self.buttons
         b = Button(self.win, Point(WINW/6, WINH-WINH/16), 140, 30, "Add Employee")
@@ -56,10 +56,16 @@ class Interface:
         b = Button(self.win, Point((WINW/6)*5, WINH-WINH/16), 75, 30, "Exit")
         buttons.append(b)
 
-    def undraw_main_menu(self):
+    def menu(self):
         for b in self.buttons:
             b.undraw()
         self.buttons.clear()
+
+    def main_menu(self):
+        self.draw_main_menu()
+        while True:
+            ans = self.choose(["Add Employee", "Remove Employee", "Save Database", "Load Database", "Exit"])
+            return ans
 
     def draw_add_employee(self):
         buttons = self.buttons
@@ -76,32 +82,15 @@ class Interface:
         buttons.append(b)
         b = Button(self.win, Point((WINW/6)*5, WINH-WINH/16), 75, 30, "Exit")
         buttons.append(b)
-    
-    def undraw_add_employee(self):
-        for b in self.buttons:
-            b.undraw()
-        self.buttons.clear()
-    
-    def draw_add_parttime(self):
-        buttons = self.buttons
-        b = Button(self.win, Point(WINW/5, WINH-WINH/16), 150, 30, "Add Employee")
-        buttons.append(b)
-
-    def main_menu(self):
-        while True:
-            ans = self.choose(["Add Employee", "Remove Employee", "Save Database", "Load Database", "Exit"])
-
-            if ans == "Add Employee":
-                self.add_employee()
 
     def add_employee(self):
-        self.undraw_main_menu()
         self.draw_add_employee()
 
         while True:
             ans = self.choose(["Back", "Exit", "Parttime Employee", "Salary Employee", "Hourly Employee"])
-            break
+            return ans
 
-        if ans == "Back":
-            self.undraw_add_employee()
-            return self.draw_main_menu()
+    def draw_add_parttime(self):
+        buttons = self.buttons
+        b = Button(self.win, Point(WINW/5, WINH-WINH/16), 150, 30, "Add Employee")
+        buttons.append(b)

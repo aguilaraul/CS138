@@ -18,7 +18,7 @@
 import socket
 
 # Server info
-host = '127.0.0.1'
+host = socket.gethostname()
 port = 12345
 
 # connect to server
