@@ -13,7 +13,7 @@ def main():
     inter = Interface()
     sc = SpellChecker(inter)
     sc.run()
-    input("Press Return to exit.")
+    input("\nPress Return to exit.")
 
 
 main()

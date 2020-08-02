@@ -15,10 +15,10 @@ class Database:
         type_ = type_.lower()
         first = input("First name: ")
         last = input("Last name: ")
-        id_ = self.id+1
+        self.id += 1
         if type_ == "parttime":
             pay = int(input("Base pay per class: "))
             classes = int(input("Number of classes teaching: "))
-            self.database[id_] = ParttimeEmployee(first, last, id_, pay, classes)
+            self.database[id_] = ParttimeEmployee(first, last, self.id, pay, classes)
 
         print("{} {} was added to the database.\n".format(first, last))
