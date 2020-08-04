@@ -9,6 +9,6 @@ def main():
     inter = Interface()
     db = Database()
     app = App(inter)
-    app.run()
+    app.mainMenu()
 
 main()

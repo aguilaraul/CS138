@@ -10,26 +10,39 @@ class App:
     def __init__(self, inter):
         self.interface = inter
 
-    def run(self):
-        self.main_menu()
-
-    def main_menu(self):
-        choice = self.interface.main_menu()
+    def mainMenu(self):
+        choice = self.interface.mainMenu()
+    
         if choice == "Add Employee":
-            self.interface.menu()
-            self.add_employee(self.interface.add_employee())
+            return self.addEmployee()
         elif choice == "Remove Employee":
-            print("Removing Employee")
+            return self.removeEmployee()
         elif choice == "Save Database":
-            print("Saving database")
+            return self.saveDatabase()
         elif choice == "Load Database":
-            print("Let's load that database")
+            return self.loadDatabase()
         else:
-            self.interface.close()
+            return self.interface.close()
+            
 
-    def add_employee(self, choice):
-        if choice == "Back":
-            self.interface.menu()
-            return self.main_menu()
+        print(choice) # @Debug
+
+    def addEmployee(self):
+        choice = self.interface.addEmployee()
+
         if choice == "Exit":
-            self.interface.close()
+            return self.interface.close()
+        elif choice == "Back":
+            return self.mainMenu()
+        else:
+            return self.addTypeEmployee(choice)
+
+    def addTypeEmployee(self, choice):
+        choice = self.interface.addTypeEmployee(choice)
+
+        if choice == "Exit":
+            return self.interface.close()
+        if choice == "Back":
+            return self.addEmployee()
+
+        print(choice) # @Debug

@@ -43,7 +43,18 @@ class Interface:
                     return b.getLabel()
 
     # Screens
-    def draw_main_menu(self):
+    def undrawButtons(self):
+        for b in self.buttons:
+            b.undraw()
+        self.buttons.clear()
+
+    def drawExitBackButtons(self):
+        b = Button(self.win, Point((WINW / 6)*4, WINH - WINH / 16), 75, 30, "Back")
+        self.buttons.append(b)
+        b = Button(self.win, Point((WINW/6)*5, WINH-WINH/16), 75, 30, "Exit")
+        self.buttons.append(b)
+    
+    def drawMainMenu(self):
         buttons = self.buttons
         b = Button(self.win, Point(WINW/6, WINH-WINH/16), 140, 30, "Add Employee")
         buttons.append(b)
@@ -56,41 +67,44 @@ class Interface:
         b = Button(self.win, Point((WINW/6)*5, WINH-WINH/16), 75, 30, "Exit")
         buttons.append(b)
 
-    def menu(self):
-        for b in self.buttons:
-            b.undraw()
-        self.buttons.clear()
-
-    def main_menu(self):
-        self.draw_main_menu()
+    def mainMenu(self):
+        self.undrawButtons()
+        self.drawMainMenu()
         while True:
             ans = self.choose(["Add Employee", "Remove Employee", "Save Database", "Load Database", "Exit"])
             return ans
 
-    def draw_add_employee(self):
+    def drawAddEmployee(self):
         buttons = self.buttons
-        # Type of Employee
+        # Types of Employee
         b = Button(self.win, Point(WINW/5, WINH/3), 150, 30, "Parttime Employee")
         buttons.append(b)
         b = Button(self.win, Point(WINW/5, (WINH/3)*1.5), 150, 30, "Salary Employee")
         buttons.append(b)
         b = Button(self.win, Point(WINW / 5, (WINH / 3) * 2), 150, 30, "Hourly Employee")
         buttons.append(b)
+        # Exit and Back
+        self.drawExitBackButtons()
 
-        # Exit & Back
-        b = Button(self.win, Point((WINW / 6)*4, WINH - WINH / 16), 75, 30, "Back")
-        buttons.append(b)
-        b = Button(self.win, Point((WINW/6)*5, WINH-WINH/16), 75, 30, "Exit")
-        buttons.append(b)
-
-    def add_employee(self):
-        self.draw_add_employee()
-
+    def addEmployee(self):
+        self.undrawButtons()
+        self.drawAddEmployee()
         while True:
             ans = self.choose(["Back", "Exit", "Parttime Employee", "Salary Employee", "Hourly Employee"])
             return ans
 
-    def draw_add_parttime(self):
-        buttons = self.buttons
+    def drawTypeEmployee(self, choice):
+        self.undrawButtons() # undraw previous menu
+        # Draw buttons
         b = Button(self.win, Point(WINW/5, WINH-WINH/16), 150, 30, "Add Employee")
-        buttons.append(b)
+        self.buttons.append(b)
+        self.drawExitBackButtons()
+
+        # Draw Entries
+        
+
+    def addTypeEmployee(self, choice):
+        self.drawTypeEmployee(choice)
+        while True:
+            ans = self.choose(["Back", "Exit", "Add Employee"])
+            return ans

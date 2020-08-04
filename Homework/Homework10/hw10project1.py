@@ -52,5 +52,6 @@ def main():
 
     inFile.close()
     print("\nNumber of reserved words:", sum(reservedWords.values()))
+    input()
 
 main()
