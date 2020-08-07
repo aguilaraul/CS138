@@ -15,5 +15,8 @@ class SalaryEmployee(Employee):
         super().__init__(first, last, id)
         self.salary = salary
 
+    def getSalary(self):
+        return self.salary
+
     def calculate_pay(self):
         return self.salary

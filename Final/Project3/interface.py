@@ -1,10 +1,10 @@
 # interface.py
 #
 # author    Raul Aguilar
-# date      August 1, 2020
+# date      August 5, 2020
 #
 # CS 138 1535 Final Project 3
-#
+# Graphical interface to interact with the employee database.
 #
 from graphics import *
 from button import Button
@@ -77,6 +77,7 @@ class Interface:
             ans = self.choose(["Add Employee", "Remove Employee", "Save Database", "Load Database", "Exit"])
             return ans
 
+    # Add Employee Screens
     def drawAddEmployee(self):
         buttons = self.buttons
         # Types of Employee
@@ -105,7 +106,8 @@ class Interface:
         b = Button(self.win, Point(WINW/5, WINH-WINH/16), 150, 30, "Add Employee")
         self.buttons.append(b)
         self.drawExitBackButtons()
-
+        
+        # Draw Text + Entries
         t = Text(Point(WINW/3, (WINH/16)*3), "First Name:")
         texts.append(t)
         e = Entry(Point((WINW/3)*2, (WINH/16)*3), 20)
@@ -119,7 +121,6 @@ class Interface:
         e = Entry(Point((WINW/3)*2, (WINH/16)*5), 20)
         entries.append(e)
 
-        # Draw Entries
         if choice == "Parttime Employee":
             t = Text(Point(WINW/3, (WINH/16)*6), "Amount per class: $")
             texts.append(t)
@@ -130,13 +131,56 @@ class Interface:
             e = Entry(Point((WINW/3)*2, (WINH/16)*7), 20)
             entries.append(e)
         elif choice == "Salary Employee":
-            e = Entry
+            t = Text(Point(WINW/3, (WINH/16)*6), "Salary: $")
+            texts.append(t)
+            e = Entry(Point((WINW/3)*2, (WINH/16)*6), 20)
+            entries.append(e)
+        else:
+            t = Text(Point(WINW/3, (WINH/16)*6), "Hourly rate: $")
+            texts.append(t)
+            e = Entry(Point((WINW/3)*2, (WINH/16)*6), 20)
+            entries.append(e)
+            t = Text(Point(WINW/3, (WINH/16)*7), "Hours worked:")
+            texts.append(t)
+            e = Entry(Point((WINW/3)*2, (WINH/16)*7), 20)
+            entries.append(e)
 
-        for e in entries: e.draw(self.win)
-        for t in texts: t.draw(self.win)
+        for e in entries:
+            e.setFill("white")
+            e.draw(self.win)
+        for t in texts:
+            t.setStyle("bold")
+            t.draw(self.win)
 
     def addTypeEmployee(self, choice):
         self.drawTypeEmployee(choice)
         while True:
             ans = self.choose(["Back", "Exit", "Add Employee"])
+            return ans
+
+    # Remove Employee Screens
+    def drawRemoveEmployee(self):
+        self.undrawMenu() # undraw previous menu
+        entries = self.entries
+        texts = self.texts
+        b = Button(self.win, Point(WINW/5, WINH-WINH/16), 150, 30, "Remove Employee")
+        self.buttons.append(b)
+        self.drawExitBackButtons()
+        t = Text(Point(WINW/3, (WINH/16)*3), "Employee ID:")
+        texts.append(t)
+        e = Entry(Point((WINW/3)*2, (WINH/16)*3), 20)
+        entries.append(e)
+
+        for t in texts:
+            t.setStyle("bold")
+            t.draw(self.win)
+        for e in entries:
+            e.setFill("white")
+            e.draw(self.win)
+
+    def removeEmployee(self):
+        self.drawRemoveEmployee()
+
+        while True:
+            ans = self.choose(["Back", "Exit", "Remove Employee"])
             return ans

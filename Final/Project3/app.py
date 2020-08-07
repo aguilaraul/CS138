@@ -1,14 +1,17 @@
 # app.py
-# 
+#
 # author    Raul Aguilar
-# date      August 1, 2020
+# date      August 5, 2020
 #
 # CS 138 1535 Final Project 3
 #
+#
+from tkinter.filedialog import askopenfilename, asksaveasfilename
 
 class App:
-    def __init__(self, inter):
+    def __init__(self, inter, database):
         self.interface = inter
+        self.database = database
 
     def mainMenu(self):
         choice = self.interface.mainMenu()
@@ -23,9 +26,6 @@ class App:
             return self.loadDatabase()
         else:
             return self.interface.close()
-            
-
-        print(choice) # @Debug
 
     def addEmployee(self):
         choice = self.interface.addEmployee()
@@ -37,12 +37,31 @@ class App:
         else:
             return self.addTypeEmployee(choice)
 
-    def addTypeEmployee(self, choice):
-        choice = self.interface.addTypeEmployee(choice)
+    def addTypeEmployee(self, employeeType):
+        choice = self.interface.addTypeEmployee(employeeType)
 
         if choice == "Exit":
             return self.interface.close()
-        if choice == "Back":
+        elif choice == "Back":
+            return self.addEmployee()
+        else:
+            self.database.addEmployee(employeeType)
             return self.addEmployee()
 
-        print(choice) # @Debug
+    def removeEmployee(self):
+        choice = self.interface.removeEmployee()
+        
+        if choice == "Exit":
+            return self.interface.close()
+        elif choice == "Back":
+            return self.mainMenu()
+        else:
+            self.database.removeEmployee()
+            return self.mainMenu()
+
+    def saveDatabase(self):
+        filepath = asksaveasfilename()
+        if filepath != "":
+            savefile = open(filepath, "w")
+            self.database.saveDatabase(savefile)
+        return self.mainMenu()

@@ -13,8 +13,14 @@ from employee import Employee
 class HourlyEmployee(Employee):
     def __init__(self, first, last, id, rate, hours):
         super().__init__(first, last, id)
-        self.hourly_rate = rate
+        self.hourlyRate = rate
         self.hours = hours
 
-    def calculate_pay(self, hours):
-        return self.hourly_rate * hours
+    def getHourlyRate(self):
+        return self.hourlyRate
+
+    def getHours(self):
+        return self.hours
+
+    def calculate_pay(self):
+        return self.hourlyRate * self.hours

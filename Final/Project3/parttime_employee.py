@@ -10,10 +10,16 @@
 from employee import Employee
 
 class ParttimeEmployee(Employee):
-    def __init__(self, first, last, id, pay, classes):
-        super().__init__(first, last, id)
-        self.base_pay = pay
+    def __init__(self, first, last, id_, pay, classes):
+        super().__init__(first, last, id_)
+        self.basePay = pay
         self.classes = classes
 
+    def getBasePay(self):
+        return self.basePay
+    
+    def getClasses(self):
+        return self.classes
+
     def calculate_pay(self):
-        return self.base_pay * self.classes
+        return self.basePay * self.classes
