@@ -12,6 +12,7 @@ from button import Button
 WINW = 960
 WINH = 640
 
+
 class Interface:
     def __init__(self):
         self.win = GraphWin("Employee Database", WINW, WINH)
@@ -22,7 +23,6 @@ class Interface:
         self.buttons = []
         self.entries = []
         self.texts = []
-
 
     def close(self):
         self.win.close()

@@ -10,6 +10,7 @@ from parttime_employee import ParttimeEmployee
 from salary_employee import SalaryEmployee
 from hourly_employee import HourlyEmployee
 
+
 class Database:
     def __init__(self, interface):
         self.interface = interface
@@ -36,18 +37,39 @@ class Database:
         id_ = self.interface.entries[0].getText()
         employee = self.database.pop(id_)
 
-        print("{}: {} was removed from the database.\n".format(employee.getID, employee.getFullName()))
+        print("{}: {} was removed from the database.\n".format(employee.getID(), employee.getFullName()))
 
     def saveDatabase(self, savefile):
         for employee in self.database.values():
-            savefile.write("{}\n".format(employee.getFullName()))
-            savefile.write("{}\n".format(employee.getID()))
+            print("First name: {}".format(employee.getFirstName()), file=savefile)
+            print("Last name: {}".format(employee.getLastName()), file=savefile)
+            savefile.write("ID: {}\n".format(employee.getID()))
             if isinstance(employee, ParttimeEmployee):
-                print("Parttime Employee", file=savefile)
-                print("Base pay: {}".format(employee.getBasePay()), file=savefile)
+                savefile.write("Parttime Employee\n")
+                savefile.write("Base pay: {}\n".format(employee.getBasePay()))
+                savefile.write("Classes: {}\n".format(employee.getClasses()))
             elif isinstance(employee, SalaryEmployee):
-                print("Salary Employee", file=savefile)
-                print("")
+                savefile.write("Salary Employee\n")
+                savefile.write("Salary: {}\n".format(employee.getSalary()))
+            else:
+                savefile.write("Hourly Employee\n")
+                savefile.write("Hourly rate: {}\n".format(employee.getHourlyRate()))
+                savefile.write("Hours worked: {}\n".format(employee.getHours()))
 
-        print("Database saved.")
         savefile.close()
+        print("Database saved.")
+
+    def loadDatabase(self, loadfile):
+        employees = loadfile.readlines()
+
+        count = 1
+        for line in employees:
+            if count < 4:
+                print(line.strip())
+
+            if count == 4:
+                type_ = line.strip()
+                if type_ == "Parttime Employee":
+
+
+            count += 1

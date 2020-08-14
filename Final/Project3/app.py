@@ -8,6 +8,7 @@
 #
 from tkinter.filedialog import askopenfilename, asksaveasfilename
 
+
 class App:
     def __init__(self, inter, database):
         self.interface = inter
@@ -64,4 +65,11 @@ class App:
         if filepath != "":
             savefile = open(filepath, "w")
             self.database.saveDatabase(savefile)
+        return self.mainMenu()
+
+    def loadDatabase(self):
+        filepath = askopenfilename()
+        if filepath != "":
+            loadfile = open(filepath, "r")
+            self.database.loadDatabase(loadfile)
         return self.mainMenu()
